@@ -1,24 +1,66 @@
-# Portia AI Email Processing Agent (CLI Version)
+# Automated Inbox Assistant - Setup Guide
 
-This project is a command-line intelligent agent built with the Portia AI SDK. It automates the processing of your Gmail inbox and spam folder by classifying emails, sending alerts to Slack for important items, and creating draft replies.
+Follow these steps to get the agent up and running on your local machine.
 
-This agent is built following the best practices from the official `portia-agent-examples` repository. It uses a `.env` file for secure configuration and runs directly in your terminal.
+### Prerequisites
+
+Before you begin, ensure you have the following:
+
+1.  **Python 3.10+** installed on your system.
+2.  **`uv`**, the Python package installer. If you don't have it, you can install it with:
+    ```bash
+    pip install uv
+    ```
+3.  **API Keys and Credentials**:
+    * **Google API Key**: For authenticating with Gmail.
+    * **Slack Channel IDs**: The specific IDs for the channels where you want to receive alerts.
+    * **Portia's API key**
 
 ---
-## 🔹 Workflow Overview
 
-1.  **Planning**: The agent first analyzes the high-level goal and creates a detailed, step-by-step plan of action.
-2.  **Execution**: The agent then executes the plan, processing your inbox and spam folder. It uses an LLM to classify emails and takes the appropriate actions (sending Slack alerts, creating Gmail drafts).
-3.  **Output**: The agent prints the final JSON summary of the completed run to your terminal.
+### ⚙️ Installation & Configuration
+
+1.  **Clone the Repository**
+
+    Open your terminal and clone this repository to your local machine:
+    ```bash
+    git clone <your-repository-url>
+    cd <repository-directory-name>
+    ```
+
+2.  **Create Your Environment File**
+
+    Create a file named `.env` in the root of the project directory. This file will store your secret keys and configuration variables. Copy the contents of `.env.example` (if available) or use the template below:
+
+    ```ini
+    # .env
+
+    # Google API Key for LLM and Gmail access
+    GOOGLE_API_KEY="your-google-api-key-here"
+
+    # Slack Bot Token (starts with 'xoxb-')
+    PORTIA_API_KEY="your-PORTIA_API_KEY-here"
+
+    # ID of the primary Slack channel for general email alerts
+    SLACK_CHANNEL_ID="xxxxxxxxx"
+
+    # ID of the dedicated channel for job posting alerts
+    SLACK_CHANNEL_ID2="xxxxxxxxxx"
+    ```
+    > **Note:** Make sure to replace the placeholder values with your actual credentials.
+
+3.  **Install Dependencies**
+
+    This project uses `uv` to manage dependencies. Run the following command to install all the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ---
-## 🚀 Setup and Installation
 
-### Step 1: Clone the Project and Set Up Environment
+### ▶️ Running the Agent
 
-First, clone this project and navigate into the directory. Then, create and activate a Python virtual environment.
+Once the setup is complete, you can start the agent with a single command:
 
 ```bash
-# It is recommended to use Python 3.12
-python3.12 -m venv .venv
-source .venv/bin/activate
+uv run main.py
