@@ -35,7 +35,7 @@ def main():
     
     
     task = f"""
-    Your primary goal is to process my Gmail inbox and spam folder.
+    You have two primary goals. First, process my Gmail inbox and spam folder. Second, search for jobs on Wellfound.
 
     1.  **Process Inbox**:
         - Use the `google_gmail-search_email` tool to find unread emails from the last 7 days. The query is `is:unread newer_than:7d`.
